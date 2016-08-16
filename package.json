@@ -1,36 +1,47 @@
 {
     "version": "0.0.0",
     "exportedEnvVars": {
-        "PATH": {
-            "global": true,
-            "resolveAsRelativePath": true,
-            "globalCollisionBehavior": "joinPath",
-            "val": "./_build/ocamlfind/bin"
-        },
-        "conf_which_enable": {
+        "version": {
             "global": true,
             "globalCollisionBehavior": "clobber",
-            "val": "enable"
-        },
-        "conf_which_installed": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
-            "val": "true"
+            "val": "0.0.0"
         },
         "FINDLIB": {
             "global": true,
             "resolveAsRelativePath": true,
             "globalCollisionBehavior": "joinPath",
             "val": "./_build/ocamlfind/lib"
+        },
+        "conf_which_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "0.0.0"
+        },
+        "conf_which_enable": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "enable"
+        },
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        },
+        "conf_which_installed": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "true"
         }
     },
     "name": "conf-which",
     "dependencies": {
+        "substs": "https://github.com/yunxing/opam-installer-bin.git",
         "nopam": "https://github.com/yunxing/nopam.git",
-        "ocaml": "https://github.com/npm-ml/ocaml.git#npm-4.02.3",
+        "ocaml": "https://github.com/npm-opam/ocaml.git#npm-4.02.3",
         "dependency-env": "https://github.com/npm-ml/dependency-env.git"
     },
     "scripts": {
-        "postinstall": "eval $(dependencyEnv) && nopam && which which"
+        "postinstall": "eval $(dependencyEnv) && nopam && which which && (opam-installer --prefix=$opam_prefix || true)"
     }
 }
