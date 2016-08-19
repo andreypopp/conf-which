@@ -1,7 +1,18 @@
 {
-    "optDependencies": {},
     "name": "conf-which",
+    "optionalDependencies": {},
     "exportedEnvVars": {
+        "conf_which_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "0.0.0"
+        },
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        },
         "version": {
             "global": true,
             "globalCollisionBehavior": "clobber",
@@ -12,27 +23,6 @@
             "resolveAsRelativePath": true,
             "globalCollisionBehavior": "joinPath",
             "val": "./_build/ocamlfind/lib"
-        },
-        "conf_which_version": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
-            "val": "0.0.0"
-        },
-        "conf_which_enable": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
-            "val": "enable"
-        },
-        "PATH": {
-            "global": true,
-            "resolveAsRelativePath": true,
-            "globalCollisionBehavior": "joinPath",
-            "val": "./_build/ocamlfind/bin"
-        },
-        "conf_which_installed": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
-            "val": "true"
         }
     },
     "version": "0.0.0",
@@ -44,6 +34,6 @@
         "dependency-env": "https://github.com/npm-ml/dependency-env.git"
     },
     "scripts": {
-        "postinstall": "eval $(dependencyEnv) && nopam && which which && (opam-installer --prefix=$opam_prefix || true)"
+        "postinstall": "eval $(dependencyEnv) && nopam && which which && (opam-installer --prefix=$opam_prefix || true) && injectOpamEnvs"
     }
 }
