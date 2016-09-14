@@ -1,5 +1,5 @@
 {
-    "name": "@yunxing-test/conf-which",
+    "name": "conf-which-actual",
     "exportedEnvVars": {
         "version": {
             "global": true,
