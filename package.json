@@ -45,6 +45,6 @@
         "postinstall": "eval $(dependencyEnv) && nopam && which which && (opam-installer --prefix=$opam_prefix || true)"
     },
     "peerDependencies": {
-        "@yunxing-test2/ocaml": ">= 4.2.3"
+        "@opam-alpha/ocaml": ">= 4.2.3"
     }
 }
