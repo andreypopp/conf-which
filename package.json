@@ -1,56 +1,30 @@
 {
-    "name": "conf-which-actual",
-    "exportedEnvVars": {
-        "CAML_LD_LIBRARY_PATH": {
-            "global": true,
-            "resolveAsRelativePath": true,
-            "globalCollisionBehavior": "joinPath",
-            "val": "./_build/ocamlfind/lib/stublibs"
-        },
-        "version": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
-            "val": "1.0.0"
-        },
-        "FINDLIB": {
-            "global": true,
-            "resolveAsRelativePath": true,
-            "globalCollisionBehavior": "joinPath",
-            "val": "./_build/ocamlfind/lib"
-        },
-        "conf_which_version": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
-            "val": "1.0.0"
-        },
-        "conf_which_enable": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
-            "val": "enable"
-        },
-        "PATH": {
-            "global": true,
-            "resolveAsRelativePath": true,
-            "globalCollisionBehavior": "joinPath",
-            "val": "./_build/ocamlfind/bin"
-        },
-        "conf_which_installed": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
-            "val": "true"
-        }
-    },
+    "name": "conf-which",
     "version": "1.0.0",
     "dependencies": {
-        "substs": "https://github.com/yunxing/substs.git",
-        "nopam": "*",
-        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git",
-        "dependency-env": "*"
+        "opam-installer-bin": "andreypopp/opam-installer-bin"
     },
-    "scripts": {
-        "postinstall": "eval $(dependencyEnv) && nopam && which which && (opam-installer --prefix=$opam_prefix || true)"
+    "esy": {
+        "build": [
+          "which which",
+          "(opam-installer --prefix=$cur__install || true)"
+        ],
+        "exportedEnv": {
+            "conf_which_version": {
+                "scope": "global",
+                "val": "1.0.0"
+            },
+            "conf_which_enable": {
+                "scope": "global",
+                "val": "enable"
+            },
+            "conf_which_installed": {
+                "scope": "global",
+                "val": "true"
+            }
+        }
     },
     "peerDependencies": {
-        "@opam-alpha/ocaml": ">= 4.2.3"
+        "ocaml": "andreypopp/ocaml#esy"
     }
 }
